@@ -5,6 +5,7 @@
 
 int trgt = 0;
 int best = 10000;
+int rslt;
 int x[N];
 
 void setpar(int a, int tmp, int cnt)
@@ -16,8 +17,11 @@ void setpar(int a, int tmp, int cnt)
 			setpar(a, c, cnt + 1);
 		}
 		else {
-			if (best > (trgt > c) ? trgt - c : c - trgt)
-				best = c;
+			int y = (trgt > c) ? trgt - c : c - trgt;
+			if (best > y) {
+				best = y;
+				rslt = c;
+			}
 		}
 	}
 }
@@ -37,7 +41,7 @@ int main(void)
 	for (i = 1; i <= N / 2; i++)
 		setpar(i, 0, 0);
 
-	printf("%d", best);
+	printf("結果：%d", rslt);
 
 	return 0;
 }
