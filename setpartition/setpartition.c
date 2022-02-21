@@ -13,7 +13,6 @@ void setpar(int a, int tmp, int j, int cnt)
 	int i;
 	for (i = j; i < cnt + N - a; i++) {
 		int c = tmp + x[i];
-		printf("%d ", i);
 		if (cnt < a) {
 			setpar(a, c, i + 1, cnt + 1);
 		}
@@ -23,7 +22,6 @@ void setpar(int a, int tmp, int j, int cnt)
 				best = y;
 				rslt = c;
 			}
-			putchar('\n');
 		}
 	}
 }
