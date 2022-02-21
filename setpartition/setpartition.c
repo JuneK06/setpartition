@@ -7,12 +7,15 @@ int trgt = 0;
 int best = 10000;
 int rslt;
 int x[N];
+int tmpi[N / 2] = { 0 };
+int index[N / 2] = { 0 };
 
 void setpar(int a, int tmp, int j, int cnt)
 {
 	int i;
 	for (i = j; i < cnt + N - a; i++) {
 		int c = tmp + x[i];
+		tmpi[cnt - 1] = i;
 		if (cnt < a) {
 			setpar(a, c, i + 1, cnt + 1);
 		}
@@ -21,6 +24,9 @@ void setpar(int a, int tmp, int j, int cnt)
 			if (best > y) {
 				best = y;
 				rslt = c;
+				int k;
+				for (k = 0; k < N / 2; k++)
+					index[k] = tmpi[k];
 			}
 		}
 	}
@@ -41,7 +47,12 @@ int main(void)
 	for (i = 1; i <= N / 2; i++)
 		setpar(i, 0, 0, 1);
 
-	printf("結果：%d", rslt);
+	printf("結果：%d\n", rslt);
+	printf("インデックス：");
+	for (i = 0; i < N / 2; i++)
+		if (i == 0 || index[i] != 0)
+			printf("%d ", index[i]);
+	putchar('\n');
 
 	return 0;
 }
