@@ -6,7 +6,7 @@
 int trgt = 0;
 int best = 10000;
 int rslt;
-int x[N];
+int x[N] = { 0 }; /* 手動で値を代入 */
 int tmpi[N / 2] = { 0 };
 int index[N / 2] = { 0 };
 
@@ -37,7 +37,7 @@ int main(void)
 	int i;
 
 	for (i = 0; i < N; i++) {
-		x[i] = rand() % 100;
+		x[i] = rand() % 100; /* ランダムな値を代入(手動にする場合はコメントアウト) */
 		trgt += x[i];
 		printf("%d ", x[i]);
 	}
